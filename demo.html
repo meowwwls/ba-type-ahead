@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bov Blog - Type Ahead Demo (WIP)</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="styles/css/demo.css">
+  </head>
+  <body>
+    <form id="search-form" class="search__form" role="search">
+      <input id="search-field" type="search" class="search__field" placeholder="search for author or article" aria-owns="search-results">
+      <ul id="search-results" class="search__suggestions" aria-live="assertive">
+      </ul>
+    </form>
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <symbol id="icon-search" viewBox="0 0 32 32">
+          <title>Search</title>
+          <path d="M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"></path>
+        </symbol>
+        <symbol id="icon-article" viewBox="0 0 32 32">
+          <title>Article</title>
+          <path d="M32 4h-32v-4h32zM20 12h-20v-4h20zM32 24h-32v-4h32zM24 32h-24v-4h24zM32 30c0 1.105-0.897 2-1.998 2-1.108 0-2.002-0.895-2.002-2s0.894-2 2.002-2c1.101 0 1.998 0.895 1.998 2z"></path>
+        </symbol>
+        <symbol id="icon-user-circle-o" viewBox="0 0 28 28">
+          <title>Author</title>
+          <path d="M14 0c7.734 0 14 6.266 14 14 0 7.688-6.234 14-14 14-7.75 0-14-6.297-14-14 0-7.734 6.266-14 14-14zM23.672 21.109c1.453-2 2.328-4.453 2.328-7.109 0-6.609-5.391-12-12-12s-12 5.391-12 12c0 2.656 0.875 5.109 2.328 7.109 0.562-2.797 1.922-5.109 4.781-5.109 1.266 1.234 2.984 2 4.891 2s3.625-0.766 4.891-2c2.859 0 4.219 2.312 4.781 5.109zM20 11c0-3.313-2.688-6-6-6s-6 2.688-6 6 2.688 6 6 6 6-2.688 6-6z"></path>
+        </symbol>
+      </defs>
+    </svg>
+    <script src="js/demo.js"></script>
+  </body>
+</html>
