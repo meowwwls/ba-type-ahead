@@ -94,9 +94,10 @@ body {
   white-space: nowrap;
 }
 
-.search__suggestion:first-of-type a {
-  padding-top: 1.5rem;
-}
+/* doesn't seem to be needed anymore */
+/*.search__suggestion:first-of-type a {
+  padding-top: 1rem;
+}*/
 
 .search__suggestion a:hover,
 .search__suggestion a:focus {
