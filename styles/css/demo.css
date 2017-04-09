@@ -130,9 +130,6 @@ input[type="search"] {
   white-space: nowrap;
   transition: color 150ms ease-out, background-color 150ms ease-out; }
 
-/*.search__suggestion:first-of-type a {
-  padding-top: 1.5rem;
-}*/
 .search__suggestion a:hover,
 .search__suggestion a:focus {
   z-index: 1;
