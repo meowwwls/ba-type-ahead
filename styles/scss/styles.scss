@@ -1,0 +1,289 @@
+
+@function get-color( $type: 'primary', $variant: 'base', $opacity: 1 ) {
+
+  $color: null;
+
+  // Get the color spectrum
+  $color-spectrum: map-get($g-framework-colors, $type);
+
+  // Get the color variant
+  @if $color-spectrum {
+    $color: map-get($color-spectrum, $variant);
+  }
+
+  // Get the alpha setting
+  $alpha: if(type-of($opacity) == 'number', $opacity, map-get($g-framework-colors-opacity, $opacity));
+
+  // Set the alpha of the color
+  @if $alpha {
+    $color: rgba($color, $alpha);
+  }
+
+  @return $color;
+}
+
+///
+/// Generate a black color with opacity
+///
+/// @param {Number} $opacity [1] - A value between 0 and 1
+///
+
+@function black($opacity: 1){
+  @return rgba(0, 0, 0, $opacity);
+}
+
+///
+/// Generate a white color with opacity
+/// @access public
+/// @param {Number} $opacity [1] - A value between 0 and 1
+/// @return {Color}
+///
+
+@function white($opacity: 1){
+  @return rgba(255, 255, 255, $opacity);
+}
+
+
+//------------------------------------------------------------------------------
+//
+//                  THE USAGE EXAMPLE STARTS HERE
+//
+//------------------------------------------------------------------------------
+
+
+///
+/// Represent the base colors palette used by the Evolution framework
+/// It is the main map used by the get-color function
+///
+/// @link http://codepen.io/DrLeleMeo/full/oZdMQa/ - Evolution UI colors palette
+///
+/// @access private
+/// @type MAP
+$g-framework-colors: (
+  'primary': (
+    'base': #56C5DE,
+    'light': tint(#56C5DE, 15%),
+    'dark': shade(#56C5DE, 15%),
+    'darken': shade(#56C5DE, 25%)
+  ),
+  'primary2': (
+    'base': #6C8CD7,
+    'light': tint(#6C8CD7, 15%),
+    'dark': shade(#6C8CD7, 15%),
+    'darken': shade(#6C8CD7, 25%)
+  ),
+  'accent': (
+    'base': #A06EBD,
+    'light': tint(#A06EBD, 15%),
+    'dark': shade(#A06EBD, 15%),
+    'darken': shade(#A06EBD, 25%)
+  ),
+  'accent2': (
+    'base': #E57B7B,
+    'light': tint(#E57B7B, 15%),
+    'dark': shade(#E57B7B, 15%),
+    'darken': shade(#E57B7B, 25%)
+  ),
+  'accent3': (
+    'base': #E189B9,
+    'light': tint(#E189B9, 15%),
+    'dark': shade(#E189B9, 15%),
+    'darken': shade(#E189B9, 25%)
+  ),
+  'accent4': (
+    'base': #80D26B,
+    'light': tint(#80D26B, 20%),
+    'dark': shade(#80D26B, 15%),
+    'darken': shade(#80D26B, 25%)
+  ),
+  'secondary': (
+    'base': #768BA1,
+    'light': tint(#768BA1, 15%),
+    'dark': shade(#768BA1, 15%),
+    'darken': shade(#768BA1, 25%)
+  ),
+  'background': (
+    'base': #1E2226,
+    'light': tint(#1E2226, 15%),
+    'dark': shade(#1E2226, 15%)
+  )
+);
+
+
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 1px;
+  min-height: 100%;
+  background-color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+.search__form {
+  width: 90%;
+  max-width: 50rem;
+  /*margin: 1.5rem auto;*/
+  margin: 4rem auto; /* for demo page only*/
+  position: relative;
+  color: #1E2226;
+}
+
+/* fixes styling issue in Safari */
+input[type="search"] {
+      -webkit-appearance: textfield;
+}
+
+.search__field {
+  position: relative;
+  margin: 0;
+  padding: .75rem;
+  width: 100%;
+  border: .4rem solid #f0f0f0;
+  z-index: 2;
+  outline:0;
+  font-size: 1rem;
+  font-family: inherit;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .15);
+  transition: border-color 150ms ease-in-out;
+}
+
+.search__field:focus {
+  border-color: get-color('secondary', 'base');
+}
+
+.search__btn {
+  position: absolute;
+  top: .39rem;
+  right: .2rem;
+  height: calc(100% - .78rem);
+  padding: 0 .8rem;
+  border: 0;
+  background-color: transparent;
+  background-color: get-color('secondary', 'base');
+  transition: background-color 200ms ease-in-out;
+  z-index: 2;
+}
+
+.search__btn:focus,
+.search__btn:hover {
+  box-shadow: none;
+  outline: none;
+  background-color: get-color('accent2', 'base');
+}
+
+.search__icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  margin-top: -.25rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.search__btn-icon {
+  margin: 0;
+  color: lighten(get-color('secondary', 'base'), 30%);
+  font-size: 2rem;
+  transition: color 200ms ease-in-out;
+}
+
+.search__btn:focus .search__btn-icon,
+.search__btn:hover .search__btn-icon {
+  color: darken(get-color('accent2', 'base'), 30%);
+}
+
+
+.search__suggestions {
+  /* position absolutely so it will not shift content below */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border: 1px solid #eee;
+  border-top: 0;
+  list-style: none;
+  z-index: 5;
+  -webkit-transition: all 150ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition: all 150ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  will-change: opacity;
+}
+
+.search__suggestions.js-is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.search__suggestion {
+  margin:0;
+  background-color: #fff;
+  text-transform: capitalize;
+}
+
+.search__suggestion + .search__suggestion {
+  // border-top: 1px solid #ddd;
+}
+
+.search__suggestion.search__suggestion--more {
+  background-color: get-color('accent2', 'base');
+  font-weight: 400;
+  text-align: center;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  border-top: none;
+}
+
+.search__suggestion--more .search__icon {
+  margin-left: 1rem;
+  transition: transform 300ms ease-in-out;
+}
+
+.search__suggestion--more a:focus .search__icon {
+  transform: translateX(1.5rem)
+}
+
+.search__suggestion a {
+  display: block;
+  padding: 1rem;
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 150ms ease-out, background-color 150ms ease-out;
+}
+
+/*.search__suggestion:first-of-type a {
+  padding-top: 1.5rem;
+}*/
+
+.search__suggestion a:hover,
+.search__suggestion a:focus {
+  z-index: 1;
+  color: lighten(get-color('secondary', 'base'), 60%);
+  background-color: get-color('secondary', 'base');
+  outline: none;
+  box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.14);
+}
+
+.suggestion__highlight {
+  background-color: saturate(lighten(get-color('primary', 'base'), 30%), 50%);
+}
+
+.search__suggestion a:hover .suggestion__highlight,
+.search__suggestion a:focus .suggestion__highlight {
+  color: darken(#768BA1, 20%);
+}

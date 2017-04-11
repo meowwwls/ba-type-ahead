@@ -1,57 +1,81 @@
 html {
   height: 100%;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 *, *:before, *:after {
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 body {
   margin: 0;
   padding: 1px;
   min-height: 100%;
-  background-color: rgb(29, 34, 38);
+  background-color: #fff;
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-}
+  font-weight: 300; }
 
 .search__form {
   width: 90%;
-  max-width: 55rem;
+  max-width: 50rem;
   /*margin: 1.5rem auto;*/
-  margin: 4rem auto; /* for demo page only*/
+  margin: 4rem auto;
+  /* for demo page only*/
   position: relative;
-}
+  color: #1E2226; }
+
+/* fixes styling issue in Safari */
+input[type="search"] {
+  -webkit-appearance: textfield; }
 
 .search__field {
   position: relative;
   margin: 0;
-  padding: 1rem 1.5rem;
+  padding: .75rem;
   width: 100%;
   border: .4rem solid #f0f0f0;
   z-index: 2;
-  outline:0;
+  outline: 0;
   font-size: 1rem;
   font-family: inherit;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, .15);
-}
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  transition: border-color 150ms ease-in-out; }
 
 .search__field:focus {
-  border-color: hsl(180, 70%, 80%);
-}
+  border-color: #768ba1; }
+
+.search__btn {
+  position: absolute;
+  top: .39rem;
+  right: .2rem;
+  height: calc(100% - .78rem);
+  padding: 0 .8rem;
+  border: 0;
+  background-color: transparent;
+  background-color: #768ba1;
+  transition: background-color 200ms ease-in-out;
+  z-index: 2; }
+
+.search__btn:focus,
+.search__btn:hover {
+  box-shadow: none;
+  outline: none;
+  background-color: #e57b7b; }
 
 .search__icon {
-  width: 1rem;
-  height: 1rem;
+  font-size: 1.5rem;
   margin-right: 1rem;
+  margin-top: -.25rem;
   display: inline-block;
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
-.search__icon path {
-  fill: #555;
-}
+.search__btn-icon {
+  margin: 0;
+  color: #d1d8df;
+  font-size: 2rem;
+  transition: color 200ms ease-in-out; }
+
+.search__btn:focus .search__btn-icon,
+.search__btn:hover .search__btn-icon {
+  color: #a62121; }
 
 .search__suggestions {
   /* position absolutely so it will not shift content below */
@@ -61,27 +85,39 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  z-index: 5;
+  border: 1px solid #eee;
+  border-top: 0;
   list-style: none;
+  z-index: 5;
   -webkit-transition: all 150ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
   transition: all 150ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  will-change: opacity;
-}
+  will-change: opacity; }
 
 .search__suggestions.js-is-hidden {
   opacity: 0;
-  visibility: hidden;
-}
+  visibility: hidden; }
 
 .search__suggestion {
-  margin:0;
+  margin: 0;
   background-color: #fff;
-  text-transform: capitalize;
-}
+  text-transform: capitalize; }
 
-.search__suggestion + .search__suggestion {
-  border-top: 1px solid #ddd;
-}
+.search__suggestion.search__suggestion--more {
+  background-color: #e57b7b;
+  font-weight: 400;
+  text-align: center;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  border-top: none; }
+
+.search__suggestion--more .search__icon {
+  margin-left: 1rem;
+  transition: transform 300ms ease-in-out; }
+
+.search__suggestion--more a:focus .search__icon {
+  transform: translateX(1.5rem); }
 
 .search__suggestion a {
   display: block;
@@ -92,20 +128,24 @@ body {
   position: relative;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
+  transition: color 150ms ease-out, background-color 150ms ease-out; }
 
-.search__suggestion:first-of-type a {
+/*.search__suggestion:first-of-type a {
   padding-top: 1.5rem;
-}
-
+}*/
 .search__suggestion a:hover,
 .search__suggestion a:focus {
   z-index: 1;
-  background-color: rgba(200, 200, 200, .3);
+  color: white;
+  background-color: #768ba1;
   outline: none;
-  box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.14);
-}
+  box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.14); }
 
 .suggestion__highlight {
-  background-color: hsl(180, 70%, 80%);
-}
+  background-color: #cef6ff; }
+
+.search__suggestion a:hover .suggestion__highlight,
+.search__suggestion a:focus .suggestion__highlight {
+  color: #485869; }
+
+/*# sourceMappingURL=demo.css.map */
