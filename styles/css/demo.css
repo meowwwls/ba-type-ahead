@@ -116,7 +116,8 @@ input[type="search"] {
   margin-left: 1rem;
   transition: transform 300ms ease-in-out; }
 
-.search__suggestion--more a:focus .search__icon {
+.search__suggestion--more a:focus .search__icon,
+.search__suggestion--more a:hover .search__icon {
   transform: translateX(1.5rem); }
 
 .search__suggestion a {

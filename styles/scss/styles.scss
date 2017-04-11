@@ -250,7 +250,8 @@ input[type="search"] {
   transition: transform 300ms ease-in-out;
 }
 
-.search__suggestion--more a:focus .search__icon {
+.search__suggestion--more a:focus .search__icon,
+.search__suggestion--more a:hover .search__icon {
   transform: translateX(1.5rem)
 }
 
